@@ -1,0 +1,148 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif-classic: 'Playfair Display', Georgia, serif;
+  --font-cinzel: 'Cinzel', serif;
+  
+  --color-gold-50: #faf7ed;
+  --color-gold-100: #f3edd3;
+  --color-gold-200: #e7daaa;
+  --color-gold-300: #dbbf7a;
+  --color-gold-400: #cfad54;
+  --color-gold-500: #c5a059;
+  --color-gold-600: #a48143;
+  --color-gold-700: #836235;
+  --color-gold-800: #624626;
+  --color-gold-900: #4a341d;
+  
+  --animate-blob: blob 9s infinite;
+  --animate-float-slow: float 6s ease-in-out infinite;
+  --animate-gold-glow: gold-glow 3s ease-in-out infinite;
+  
+  @keyframes blob {
+    0% { transform: translate(0px, 0px) scale(1); }
+    33% { transform: translate(40px, -60px) scale(1.15); }
+    66% { transform: translate(-30px, 30px) scale(0.85); }
+    100% { transform: translate(0px, 0px) scale(1); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(2deg); }
+  }
+  @keyframes gold-glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(197, 160, 89, 0.15), inset 0 0 10px rgba(197, 160, 89, 0.05); }
+    50% { box-shadow: 0 0 35px rgba(197, 160, 89, 0.35), inset 0 0 20px rgba(197, 160, 89, 0.15); }
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f1f5f9;
+  color: #1e293b; /* dark slate text */
+  overflow: hidden;
+  font-family: var(--font-sans);
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 
+    0 20px 50px rgba(15, 23, 42, 0.05), 
+    inset 0 1px 3px rgba(255, 255, 255, 0.9);
+}
+
+.classic-panel {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 
+    0 20px 50px rgba(15, 23, 42, 0.05), 
+    inset 0 1px 3px rgba(255, 255, 255, 0.9);
+}
+
+.classic-panel::before {
+  display: none;
+}
+
+.classic-gold-text {
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #db2777 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(241, 245, 249, 0.5);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.3);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.5);
+}
+
+/* Mermaid SVG Responsive Fit */
+.mermaid svg {
+  max-width: 100% !important;
+  max-height: 100% !important;
+  height: auto !important;
+  width: auto !important;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+
+.animate-dash {
+  stroke-dasharray: 6, 6;
+  animation: dash 1s linear infinite;
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+.animate-spin-reverse {
+  animation: spin-reverse 15s linear infinite;
+}
+
+
