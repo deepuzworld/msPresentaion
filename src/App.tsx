@@ -165,6 +165,14 @@ const dfdWorkflows: Record<number, { title: string; steps: string[] }> = {
   }
 };
 
+const getImageUrl = (url?: string) => {
+  if (!url) return undefined;
+  if (url.startsWith('/')) {
+    return import.meta.env.BASE_URL + url.substring(1);
+  }
+  return url;
+};
+
 function App() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
@@ -381,7 +389,7 @@ function App() {
                 {/* Glow behind image */}
                 <div className={`absolute inset-0 blur-3xl rounded-full opacity-20 ${isClassicTheme ? 'bg-gold-500/40' : 'bg-purple-500/40'}`} />
                 <img 
-                  src={slide.imageUrl} 
+                  src={getImageUrl(slide.imageUrl)} 
                   alt="Presentation Hero Mockup" 
                   className={`relative z-10 w-full h-auto object-contain rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] transform -rotate-3 hover:rotate-0 transition-transform duration-700 ${isClassicTheme ? 'border-2 border-gold-500/30' : 'border border-white/10'}`}
                 />
@@ -799,7 +807,7 @@ function App() {
             className="absolute inset-0 w-full h-full flex items-center justify-center z-10"
           >
             <img 
-              src={slide.imageUrl} 
+              src={getImageUrl(slide.imageUrl)} 
               alt={slide.title || 'Screenshot'} 
               className="w-full h-full object-contain drop-shadow-2xl"
             />
